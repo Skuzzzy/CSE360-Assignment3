@@ -12,6 +12,7 @@ public class Calculator {
 	 * Internal state of calculator
 	 */
 	private int total;
+	private StringBuilder history;
 	
 	
 	/*
@@ -19,6 +20,7 @@ public class Calculator {
 	 */
 	public Calculator () {
 		total = 0;  // not needed - included for clarity
+		history = new StringBuilder("0");
 	}
 	
 	/*
@@ -35,6 +37,7 @@ public class Calculator {
 	 */
 	public void add (int value) {
 		this.total += value;
+		this.history.append(" + " + value);
 	}
 	
 	/*
@@ -43,6 +46,7 @@ public class Calculator {
 	 */
 	public void subtract (int value) {
 		this.total -= value;
+		this.history.append(" - " + value);
 	}
 	
 	/*
@@ -51,6 +55,7 @@ public class Calculator {
 	 */
 	public void multiply (int value) {
 		this.total *= value;
+		this.history.append(" * " + value);
 	}
 	
 	/*
@@ -58,6 +63,7 @@ public class Calculator {
 	 * @param value The value that the internal state should be divided by
 	 */
 	public void divide (int value) {
+		this.history.append(" / " + value);
 		if(value == 0)
 		{
 			this.total = 0;
@@ -74,6 +80,6 @@ public class Calculator {
 	 * @return A string representation of the Calculator's history
 	 */
 	public String getHistory () {
-		return "";
+		return this.history.toString();
 	}
 }
